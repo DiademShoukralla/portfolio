@@ -3,7 +3,6 @@
 <head>
     <link rel="stylesheet" href="{% static 'base.css' %}">
     <link rel="stylesheet" href="{% static 'header.css' %}">
-    <link rel="stylesheet" href="{% static 'footer.css' %}">
     {% block headers %} {% endblock %}
 
     <meta charset="UTF-8">
@@ -12,8 +11,13 @@
 <body>
     {% include "base_header.html" %}
 
-    <div id="content">
-        {% block content %} {% endblock %}
+    <div class="content">
+        {% block content %}
+            <div class="center">
+                {% block center %}
+                {% endblock %}
+            </div>
+        {% endblock %}
     </div>
 
 </body>

@@ -25,16 +25,11 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ('username', 'password')
+
     def __init__(self, request=None, *args, **kwargs):
         super(LoginForm, self).__init__(request, *args, **kwargs)
         self.fields['username'].label = "Username or Email"
 
-    # def save(self, commit=True):
-    #     user = super(LoginForm, self).save(commit=False)
-    #     user.email = self.cleaned_data["email"]
-    #     if commit:
-    #         user.save()
-    #     return user
 
 class MyUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):

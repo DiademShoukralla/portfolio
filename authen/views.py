@@ -29,12 +29,11 @@ def login(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=raw_password)
-            print user
             if user:
                 log(request, user)
-                return redirect('/')
+                next_page = request.GET.get('next')
+                return redirect(next_page) if next_page else redirect('/')
 
-        print "yes"
     else:
         form = LoginForm()
     return render(request, 'authen/form_base.html', {'form': form, 'screen': 'Sign in'})
