@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from string import find
-
 from django.db import models
 
 from authen.models import User
