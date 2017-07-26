@@ -1,0 +1,24 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    {% block headers %} {% endblock %}
+
+    <meta charset="UTF-8">
+    <title>{% block title %} Welcome {% endblock %}</title>
+</head>
+<body>
+    {% include "base_header.html" %}
+
+    <div class="content">
+        {% block content %}
+            <div class="center">
+                {% block center %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+
+</body>
+</html>

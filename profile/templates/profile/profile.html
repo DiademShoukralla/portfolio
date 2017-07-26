@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% load static %}
+{% block title %} {{ title }} {% endblock %}
+{% block headers %}
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <link rel="stylesheet" href="{% static 'profile/profile.css' %}">
+    <script src="{% static 'profile/profile.js' %}"></script>
+{% endblock %}
+{% block center %}
+    <h2>Your Profile</h2>
+
+    <div class="mid-top"> <!-- also contain email and username-->
+        <div class="circle pic" style="background:url({{ user.user.photo.url }});"></div>
+        <div class="circle back">
+            <label class="icon">+ upload</label>
+        </div>
+        <div class="info">
+            <p>username: {{ user.username }}</p>
+            <p>email: {{ user.email }}</p>
+        </div>
+    </div>
+
+    <form>
+        <input>
+        <input>
+    </form>
+
+    <div class="attribute">
+        <div class="inner-form">
+            <label>First name: </label><br>
+            <div class="input-container">
+                <input type="text" class="input-text" name="first_name" value="{{ user.first_name }}"
+                       placeholder="First name" disabled>
+                <button type="button" class="icon toggle mirror-icon" onclick="btnToggle(this)"></button>
+                <button type="button" class="icon cancel" onclick="btnCancel(this)"></button>
+                <button type="button" class="icon submit" onclick="btnSubmit(this)"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="attribute">
+        <div class="inner-form">
+            <label>Last name: </label><br>
+            <div class="input-container">
+                <input type="text" class="input-text" name="last_name" value="{{ user.last_name }}"
+                       placeholder="Last name" disabled>
+                <button type="button" class="icon toggle mirror-icon" onclick="btnToggle(this)"></button>
+                <button type="button" class="icon cancel" onclick="btnCancel(this)"></button>
+                <button type="button" class="icon submit" onclick="btnSubmit(this)"></button>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

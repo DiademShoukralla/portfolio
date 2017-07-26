@@ -1,0 +1,43 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ screen }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'authen/form_base.css' %}">
+</head>
+<body>
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <h2>{{ screen }}</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                      <p>
+                          {{ field.label_tag }}
+                        {% ifequal field.label_tag "Username" %}
+                           or email
+                          {% endifequal %}
+                          <br>
+                        {{ field }}
+
+                        {% for error in field.errors %}
+                          <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                      </p>
+                    {% endfor %}
+                    <input type="submit" name="Submit" value="Submit">
+                </form>
+                {% if forms.errors %}
+                    {{ form.errors }} <br>
+                {% endif %}
+                {% ifequal screen "Sign in" %}
+                    Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+                {% else %}
+                    Have an account? <a href="{% url 'login' %}">Sign in</a>
+                {% endifequal %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
