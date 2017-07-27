@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'', include('authen.urls')),
     url(r'^$', dashboard, name="home"),
     url(r'^profile/', include("profile.urls", namespace="profile")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+              + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
