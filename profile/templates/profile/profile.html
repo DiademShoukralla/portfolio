@@ -11,17 +11,26 @@
 
     <div class="mid-top"> <!-- also contain email and username-->
         <div class="circle pic" style="background:url({{ user.user.photo.url }});"></div>
-        <div class="circle back">
-            <label class="icon">+ upload</label>
+        <div class="circle front">
+            <form method="post" action="update/" enctype='multipart/form-data'>{% csrf_token %}
+                <label class="icon" for="upload-photo">+ change</label>
+                <input type="file" name="photo" id="upload-photo" accept="image/*" onchange="upload(this)">
+            </form>
         </div>
+        <!--<button class=" icon accept" title="upload" id="send">&#10003</button>-->
         <div class="info">
             <p>username: {{ user.username }}</p>
             <p>email: {{ user.email }}</p>
         </div>
     </div>
 
-    <input type="file" name="photo" id="upload-photo" accept="image/*">
-    <input>
+    <!--<div class="upload-popup">-->
+        <!--<label for="upload-photo" id="photo-label" class="popup-item">upload</label>-->
+        <!--<input type="file" name="photo" id="upload-photo" accept="image/*">-->
+        <!--{% if user.user.photo.url %}-->
+            <!--<button class="popup-item">remove</button>-->
+        <!--{% endif %}-->
+    <!--</div>-->
 
     <div class="attribute">
         <div class="inner-form">

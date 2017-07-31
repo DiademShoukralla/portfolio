@@ -26,6 +26,28 @@ h2 {
     height: 260px;
 }
 
+.upload-popup{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    margin-top: 200px;
+    margin-left: 25%;
+    width: 350px;
+    height: 200px;
+    background: white;
+    z-index: 20;
+    box-shadow: 0px 0px 20px -10px grey;
+
+}
+
+#photo-label{
+
+}
+
+#upload-photo {
+    display: none;
+}
+
 .circle{
     position: absolute;
     height: 190px;
@@ -51,24 +73,29 @@ h2 {
     color: grey;
 }
 
-.back{
+.front{
     background: inherit;
-    z-index: 5;
+    z-index: 6;
     text-align: center;
     vertical-align: middle;
     line-height: 190px;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 0.5s;
+    background: white;
 }
 
 .pic{
-    z-index:6;
+    z-index:5;
     background-size: auto 200px;
+    opacity: 1;
     -webkit-transition: opacity 0.5s; /* For Safari 3.1 to 6.0 */
     transition: opacity 0.5s;
 }
 
-.pic:hover{
+.front:hover{
     cursor: pointer;
-    opacity: 0.1;
+    opacity: 0.7;
 }
 
 .inner-form{
@@ -91,7 +118,6 @@ h2 {
     box-sizing: border-box;
 }
 
-
 .icon {
     width: auto;
     height: auto;
@@ -102,10 +128,26 @@ h2 {
     border-radius: 4px;
     cursor: pointer;
 }
-
-.back .icon {
+.accept{
+    position: absolute;
+    background: #00cc00;
+    border-radius: 50%;
+    color: white;
+    font-size: 1em;
+    box-shadow: 0px 0px 5px -1px grey;
+    bottom: 0px;
+    margin-bottom: 4em;
+    right: 0px;
+    margin-right: 1.3em;
+    line-height: 100%;
+    padding: 0px;
+    text-align: center;
+    display: none;
+    width: 1.7em;
+    height: 1.7em;
 
 }
+
 
 .toggle {
     display: block;

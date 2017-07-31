@@ -6,8 +6,11 @@ window.onload = function() {
     // Same number of buttons
     for (var i = 0; i < cancelbtns.length; i++){
         cancelbtns[i].innerHTML = "&#10006";
+        cancelbtns[i].title = "cancel";
         togglebtns[i].innerHTML = "&#9998";
+        togglebtns[i].title = "edit";
         submitbtns[i].innerHTML = "&#10003";
+        submitbtns[i].title = "submit";
     }
 
 };
@@ -71,3 +74,20 @@ function endEditDisplay(elmnt){
     input.disabled = true;
 }
 
+
+function upload(elmnt){
+    var form = elmnt.parentElement;
+    form.submit();
+     $.ajax({
+        url: '/profile/update/',
+        method: 'POST',
+        beforeSend: function(request) {
+            request.setRequestHeader("X-CSRFToken", $.cookie("csrftoken"));
+        },
+        data: values,
+        dataType: 'text',
+        success: function setTextBox(data){
+            box.value = data;
+        }
+      });
+}

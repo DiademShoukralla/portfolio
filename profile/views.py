@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template.defaultfilters import capfirst
+from .models import UserProfile
 
 
 @login_required(login_url=reverse_lazy('login'))
@@ -23,4 +24,10 @@ def update(request):
             user.last_name = capfirst(last_name)
             user.save()
             return HttpResponse(user.last_name)
+        myfile = request.FILES.get('photo', None)
+        if myfile:
+            u_p = UserProfile.objects.get(user=user)
+            u_p.photo = myfile
+            u_p.save()
+            return HttpResponseRedirect(reverse_lazy("profile:index"))
     return HttpResponse("")
