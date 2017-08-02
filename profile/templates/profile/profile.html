@@ -10,7 +10,9 @@
     <h2>Your Profile</h2>
 
     <div class="mid-top"> <!-- also contain email and username-->
-        <div class="circle pic" style="background:url({{ user.user.photo.url }});"></div>
+        <div class="circle pic"
+             style="background:url({% if user.user.photo %} {{ user.user.photo.url }} {% else %} '#' {% endif %});">
+    </div>
         <div class="circle front">
             <form method="post" action="update/" enctype='multipart/form-data'>{% csrf_token %}
                 <label class="icon" for="upload-photo">+ change</label>
@@ -23,14 +25,6 @@
             <p>email: {{ user.email }}</p>
         </div>
     </div>
-
-    <!--<div class="upload-popup">-->
-        <!--<label for="upload-photo" id="photo-label" class="popup-item">upload</label>-->
-        <!--<input type="file" name="photo" id="upload-photo" accept="image/*">-->
-        <!--{% if user.user.photo.url %}-->
-            <!--<button class="popup-item">remove</button>-->
-        <!--{% endif %}-->
-    <!--</div>-->
 
     <div class="attribute">
         <div class="inner-form">

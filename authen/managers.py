@@ -12,6 +12,7 @@ class UserManager(BaseUserManager):
             raise ValueError('The given email and username must be set')
         email = self.normalize_email(email)
         user = self.model(username=username.lower(), email=email.lower(), **extra_fields)
+        user.user
         user.set_password(password)
         user.save(using=self._db)
         return user

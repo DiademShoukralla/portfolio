@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .managers import UserManager
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     """Regular user"""
     username = models.CharField(_('username'), max_length=30, unique=True)
