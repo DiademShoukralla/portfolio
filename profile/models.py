@@ -32,6 +32,9 @@ class UserProfile(models.Model):
     country = models.CharField(max_length=100, default='', blank=True)
     organization = models.CharField(max_length=100, default='', blank=True)
 
+    def __unicode__(self):
+        return str(self.user)
+
 
 def create_profile(sender, instance, created, **kwargs):
     """Create profile for every new user"""

@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% load static %}
+{% block title %} {{ title }} {% endblock %}
+{% block center %}
+    <h2>{{ title }}</h2>
+    <p>{{ business.name }}</p>
+    <p>{{ business.email }}</p>
+    <p>Description: {{ business.description }}</p>
+{% endblock %}

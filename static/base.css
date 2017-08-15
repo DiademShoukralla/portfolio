@@ -23,6 +23,24 @@ body {
 
 .center {
     width: auto;
-    min-height: 200px;
+}
 
+.middle{
+   position: fixed;
+    display: inline-block;
+    width: 100%;
+    height: 200px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+}
+
+.middle text{
+    width: 100%;
+    position: absolute;
+    text-align: center;
 }

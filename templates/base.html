@@ -16,6 +16,12 @@
         {% block content %}
             <div class="center">
                 {% block center %}
+                    {% if user.is_authenticated %}
+                        <div class="middle"><text >You have no upcoming appointments</text></div>
+                    {% else %}
+                        <div class="middle"><text >Login to get started</text></div>
+
+                    {% endif %}
                 {% endblock %}
             </div>
         {% endblock %}

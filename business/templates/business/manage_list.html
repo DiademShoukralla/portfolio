@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% load static %}
+{% block title %} {{ title }} {% endblock %}
+{% block headers %}
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <link rel="stylesheet" href="{% static 'business/manage_list.css' %}">
+    <script src="{% static 'business/manage_list.js' %}"></script>
+
+{% endblock %}
+{% block center %}
+    <button id="add" onclick="create()">Add business</button> <h2>{{ title }}</h2>
+    <div id="float">
+        <div id="create-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button onclick="submit()">Create</button>
+        </div>
+    </div>
+    <div id="shadow" onclick="cancel()"></div>
+    {% if business_list %}
+        <table id="business">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            {% for business in business_list %}
+                <tr>
+                    <td>{{ business.name }}</td>
+                    <td>{{ business.email }}</td>
+                    <td>{% if business.number %} ( {{ business.area_code }} ) {{ business.number }}  {% endif %}</td>
+                    <td>{{ business.description|truncatechars:100 }}</td>
+                    <td><a href="/business/manage/{{ business.name }}/" class="see_detail">manage</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>You do not manage any businesses!</p>
+    {% endif %}
+{% endblock %}
